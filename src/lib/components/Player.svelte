@@ -3,6 +3,10 @@
         
     $: score = data.fame + data.spells * 2 + data.actions + data.artifacts * 2 + Math.floor(data.crystals / 2) + data.healthy + Math.floor(data.wounded / 2) + data.fortified * 2 + data.adventure * 2 - data.wounds * 2 + data.cityleader * 7 + data.cityfollower * 4;
     </script>
+    <!-- <svelte:head>
+        <link href="https://fonts.googleapis.com/css?family=Gelasio" rel="stylesheet">
+    </svelte:head> -->
+
     <div>
         <h2>
             Player {data.n}
@@ -56,3 +60,27 @@
         </p>
     </div>
     
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;500&display=swap');
+        
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 2em;
+            font-family: 'Spline Sans', sans-serif;
+            font-weight: 500;
+        }
+
+        p {
+            font-size: 2em;
+            font-family: 'Spline Sans', sans-serif;
+        }
+
+        input {
+            height: 2em;
+            font-size: 0.78em;
+        }
+    </style>

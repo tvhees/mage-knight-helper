@@ -3,6 +3,11 @@
 	
 	let name = 'whoever you are';
 	let numberOfPlayers = 0;
+
+	const handleClick = () => {
+
+
+	}
 	
 	$: players = Array(numberOfPlayers).fill({
 			fame: 0,
@@ -40,12 +45,28 @@ Hello {name}!
 <style>
 	p {
 		color: limegreen;
-		font-size: 1em;
+		font-size: 2em;
 	}
 	
 	o {
 		color: turquoise;
 	}
+
+	label {
+		font-size: 2em;
+
+	}
+	input {
+		height: 2em;
+		width: 10em;
+		font-size: 1em;
+	}
+
+	button {
+		height: 2em;
+		font-size: 1em;
+	}
+
 </style>
 
 <p>
@@ -57,13 +78,13 @@ Hello {name}!
 
 <!-- Select number of players -->
 <label>Number of players:
-	<input type='number' min=0 max=4 bind:value={numberOfPlayers}>
+	<input type='number' min=0 max=4  bind:value={numberOfPlayers}>
 </label>
 
 <p> 
-	Click this button when you have finished scoring
+	Click this button when you have finished scoring!
 </p>
-	<button> Finished Scoring! </button>
+	<button on:click={handleClick}> Finished Scoring! </button>
 <!-- For each player, one number input for each category -->
 {#each players as player}
 	<Player bind:data={player}>  </Player>	
