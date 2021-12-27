@@ -1,13 +1,24 @@
 <script>
 	import Player from '$lib/components/Player.svelte'
+import { calculatePlayerScore } from '$lib/utilities';
 	
 	let name = 'whoever you are';
 	let numberOfPlayers = 0;
 
 	const handleClick = () => {
-
-
+		let playersWhoWon = [];
+		let scores = players.map(player => calculatePlayerScore(player));
+		players.forEach(
+			player => {
+				let score = calculatePlayerScore(player)
+				if (score >= Math.max(...scores)) {
+					playersWhoWon.push(player.n);
+				}
+			}
+		);
+		console.log(playersWhoWon);
 	}
+
 	
 	$: players = Array(numberOfPlayers).fill({
 			fame: 0,
@@ -35,9 +46,9 @@ Hello {name}!
 
 
 <p>
- My name is Jesper and welcome to my Mage Knight scoring website! 
+ My name is Jesper and welcome to my Mage Knight website! 
 	This is where you can do all the endgame scoring for competitive Mage Knight without having
-	to do all that annoying Maths.
+	to do all that annoying Maths. There is also a compendium of most of the monsters in the game and the best way to defeat them
 </p>
 
 
@@ -46,25 +57,30 @@ Hello {name}!
 	p {
 		color: limegreen;
 		font-size: 2em;
+		font-family: 'Spline Sans', sans-serif;
 	}
 	
 	o {
 		color: turquoise;
+		font-size: 2em;
+		font-family: 'Spline Sans', sans-serif;
 	}
 
 	label {
 		font-size: 2em;
-
+		font-family:'Spline Sans', sans-serif;
+		color:aquamarine;
 	}
 	input {
 		height: 2em;
-		width: 10em;
 		font-size: 1em;
 	}
 
 	button {
 		height: 2em;
 		font-size: 1em;
+		font-family:'Spline Sans', sans-serif;
+		color:black;
 	}
 
 </style>
@@ -85,7 +101,18 @@ Hello {name}!
 	Click this button when you have finished scoring!
 </p>
 	<button on:click={handleClick}> Finished Scoring! </button>
+
+	
 <!-- For each player, one number input for each category -->
 {#each players as player}
 	<Player bind:data={player}>  </Player>	
 {/each}
+
+
+
+<p>
+	Below is a compendium of all the monsters in Mage Knight and its expansions.
+	You will find descriptions of each monster, its abilities and how to beat it.
+	From terrifying dragons to marauding orcs, from malicious ghosts to hordes of zombies,
+	there are tons of monsters in Mage Knight to learn how to fight.
+		</p>
