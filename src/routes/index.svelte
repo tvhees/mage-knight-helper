@@ -40,9 +40,9 @@ import { calculatePlayerScore } from '$lib/utilities';
 		}))
 	
 </script>
-<o>
+<p class="hello">
 Hello {name}!
-</o>
+</p>
 
 
 <p>
@@ -60,7 +60,7 @@ Hello {name}!
 		font-family: 'Spline Sans', sans-serif;
 	}
 	
-	o {
+	.hello {
 		color: turquoise;
 		font-size: 2em;
 		font-family: 'Spline Sans', sans-serif;
