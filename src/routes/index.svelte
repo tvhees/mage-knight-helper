@@ -83,9 +83,13 @@ Hello {name}!
 		color:black;
 	}
 
+	.inputOrder {
+		color: burlywood;
+	}
+
 </style>
 
-<p>
+<p class="inputOrder">
 	Type your name below
 </p>
 
