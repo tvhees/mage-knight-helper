@@ -1,4 +1,6 @@
 <script>
+	import NumberInput from '$lib/components/NumberInput.svelte';
+
 	import Player from '$lib/components/Player.svelte';
 	import { calculatePlayerScore } from '$lib/utilities';
 
@@ -59,10 +61,9 @@
 <input type="text" bind:value={name} />
 
 <!-- Select number of players -->
-<label
-	>Number of players:
-	<input type="number" min="0" max="4" bind:value={numberOfPlayers} />
-</label>
+<NumberInput id="players" min={0} max={4} bind:value={numberOfPlayers}
+	>Number of players:</NumberInput
+>
 
 <p>Click this button when you have finished scoring!</p>
 <button on:click={handleClick}> Finished Scoring! </button>
@@ -92,30 +93,13 @@
 <style>
 	p {
 		color: limegreen;
-		font-size: 2em;
-		font-family: 'Spline Sans', sans-serif;
 	}
 
 	.hello {
 		color: turquoise;
-		font-size: 2em;
-		font-family: 'Spline Sans', sans-serif;
-	}
-
-	label {
-		font-size: 2em;
-		font-family: 'Spline Sans', sans-serif;
-		color: aquamarine;
-	}
-	input {
-		height: 2em;
-		font-size: 1em;
 	}
 
 	button {
-		height: 2em;
-		font-size: 1em;
-		font-family: 'Spline Sans', sans-serif;
 		color: black;
 	}
 
