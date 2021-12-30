@@ -52,38 +52,10 @@ import { calculatePlayerScore } from "$lib/utilities";
             <input type='number' min=0 bind:value={data.wounds}>
         </label>
     <!-- Cities Led/Followed -->
-        <label>Number of Cities Led :
-            <input type='number' min=0 bind:value={data.cityleader}>
-        </label>
-        <label>Number of Cities Followed :
-            <input type='number' min=0 bind:value={data.cityfollower}>
-        </label>
-        <p>
-            Score: {score}
-        </p>
-    </div>
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;500&display=swap');
-        
-        div {
-            display: flex;
-            flex-direction: column;
-        }
 
-        label {
-            font-size: 2em;
-            font-family: 'Spline Sans', sans-serif;
-            font-weight: 500;
-        }
-
-        p {
-            font-size: 2em;
-            font-family: 'Spline Sans', sans-serif;
-        }
-
-        input {
-            height: 2em;
-            font-size: 0.78em;
-        }
-    </style>
+<style>
+	div {
+		display: flex;
+		flex-direction: column;
+	}
+</style>

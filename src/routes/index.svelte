@@ -76,30 +76,13 @@
 <style>
 	p {
 		color: limegreen;
-		font-size: 2em;
-		font-family: 'Spline Sans', sans-serif;
 	}
 
 	.hello {
 		color: turquoise;
-		font-size: 2em;
-		font-family: 'Spline Sans', sans-serif;
-	}
-
-	label {
-		font-size: 2em;
-		font-family: 'Spline Sans', sans-serif;
-		color: aquamarine;
-	}
-	input {
-		height: 2em;
-		font-size: 1em;
 	}
 
 	button {
-		height: 2em;
-		font-size: 1em;
-		font-family: 'Spline Sans', sans-serif;
 		color: black;
 	}
 </style>
