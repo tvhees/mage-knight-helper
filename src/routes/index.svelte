@@ -6,6 +6,7 @@
 
 	let name = 'whoever you are';
 	let numberOfPlayers = 0;
+	let winners = [];
 
 	const handleClick = () => {
 		let playersWhoWon = [];
@@ -16,7 +17,12 @@
 				playersWhoWon.push(player.n);
 			}
 		});
-		console.log(playersWhoWon);
+		winners = playersWhoWon;
+	};
+
+	const resetGame = () => {
+		numberOfPlayers = 0;
+		winners = [];
 	};
 
 	$: players = Array(numberOfPlayers)
@@ -50,7 +56,7 @@
 	compendium of most of the monsters in the game and the best way to defeat them
 </p>
 
-<p>Type your name below</p>
+<p class="inputOrder">Type your name below</p>
 
 <input type="text" bind:value={name} />
 
@@ -61,6 +67,11 @@
 
 <p>Click this button when you have finished scoring!</p>
 <button on:click={handleClick}> Finished Scoring! </button>
+{#if winners.length}
+	<p>And the winner is... {winners.map((n) => `player ${n}`).join(' and ')}</p>
+{/if}
+
+<button on:click={resetGame}>Reset</button>
 
 <!-- For each player, one number input for each category -->
 {#each players as player}
@@ -74,6 +85,11 @@
 	Knight to learn how to fight.
 </p>
 
+<p>
+	Orcs The first monsters that you are likely to fight are orcs. They tend to be relatively easy,
+	and they are rampaging enemies, which means that
+</p>
+
 <style>
 	p {
 		color: limegreen;
@@ -85,5 +101,9 @@
 
 	button {
 		color: black;
+	}
+
+	.inputOrder {
+		color: burlywood;
 	}
 </style>
