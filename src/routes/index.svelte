@@ -7,6 +7,7 @@
 	let name = 'whoever you are';
 	let numberOfPlayers = 0;
 	let winners = [];
+	let winnerInput = 'won';
 
 	const handleClick = () => {
 		let playersWhoWon = [];
@@ -23,6 +24,10 @@
 	const resetGame = () => {
 		numberOfPlayers = 0;
 		winners = [];
+	};
+
+	const inputWinner = (e) => {
+		winnerInput = e.target.value;
 	};
 
 	$: players = Array(numberOfPlayers)
@@ -50,6 +55,12 @@
 	Hello {name}!
 </p>
 
+<input type="text" on:input={inputWinner} />
+
+<p>
+	Who {winnerInput}?
+</p>
+
 <p>
 	My name is Jesper and welcome to my Mage Knight website! This is where you can do all the endgame
 	scoring for competitive Mage Knight without having to do all that annoying Maths. There is also a
@@ -68,7 +79,7 @@
 <p>Click this button when you have finished scoring!</p>
 <button on:click={handleClick}> Finished Scoring! </button>
 {#if winners.length}
-	<p>And the winner is... {winners.map((n) => `player ${n}`).join(' and ')}</p>
+	<p>And the winner is... {winners.map((n) => `Player ${n}`).join(' and ')}!</p>
 {/if}
 
 <button on:click={resetGame}>Reset</button>
@@ -85,9 +96,15 @@
 	Knight to learn how to fight.
 </p>
 
+<h3>Orcs</h3>
 <p>
-	Orcs The first monsters that you are likely to fight are orcs. They tend to be relatively easy,
-	and they are rampaging enemies, which means that
+	The first monsters that you are likely to fight are orcs. They tend to be relatively easy, and
+	they are rampaging enemies, which means that you can attack them from an adjacent square. It also
+	means that if you move from one adjacent square to another, they will attack you. This is a
+	compendium of all of the orc enemies from the game. Prowlers: Very weak orc enemies that run
+	around the map, attacking villages and monasteries, hence the name Prowlers. The best way to
+	defeat these is either to have 3 ranged or siege attack, or 4 block, since they do not have much
+	health.
 </p>
 
 <style>
