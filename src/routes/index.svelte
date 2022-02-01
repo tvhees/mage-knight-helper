@@ -24,9 +24,14 @@
 	const resetGame = () => {
 		numberOfPlayers = 0;
 		winners = [];
+		document.getElementById('monsterCompendium').style.display = 'none';
+		document.getElementById('buttonForCompendium').style.display = 'block';
 	};
 
-	const showCompendium = () => {};
+	const showCompendium = () => {
+		document.getElementById('monsterCompendium').style.display = 'block';
+		document.getElementById('buttonForCompendium').style.display = 'none';
+	};
 
 	$: players = Array(numberOfPlayers)
 		.fill({
@@ -75,38 +80,41 @@
 {/if}
 
 <button on:click={resetGame}>Reset</button>
-<button on:click={showCompendium}>Show enemy compendium</button>>
+
+<button id="buttonForCompendium" on:click={showCompendium}>Show enemy compendium</button>
 
 <!-- For each player, one number input for each category -->
 {#each players as player}
 	<Player bind:data={player} />
 {/each}
 
-<p>
-	Below is a compendium of all the monsters in Mage Knight and its expansions. You will find
-	descriptions of each monster, its abilities and how to beat it. From terrifying dragons to
-	marauding orcs, from malicious ghosts to hordes of zombies, there are tons of monsters in Mage
-	Knight to learn how to fight.
-</p>
+<div id="monsterCompendium" style="display:none;">
+	<p>
+		Below is a compendium of all the monsters in Mage Knight and its expansions. You will find
+		descriptions of each monster, its abilities and how to beat it. From terrifying dragons to
+		marauding orcs, from malicious ghosts to hordes of zombies, there are tons of monsters in Mage
+		Knight to learn how to fight.
+	</p>
 
-<h3>Orcs</h3>
-<p>
-	The first monsters that you are likely to fight are orcs. They tend to be relatively easy, and
-	they are rampaging enemies, which means that you can attack them from an adjacent square. It also
-	means that if you move from one adjacent square to another, they will attack you. This is a
-	compendium of all of the orc enemies from the game.
-</p>
+	<h3>Orcs</h3>
+	<p>
+		The first monsters that you are likely to fight are orcs. They tend to be relatively easy, and
+		they are rampaging enemies, which means that you can attack them from an adjacent square. It
+		also means that if you move from one adjacent square to another, they will attack you. This is a
+		compendium of all of the orc enemies from the game.
+	</p>
 
-<h4>
-	Prowlers: Very weak orc enemies. The best way to defeat these is either to have 3 ranged or siege
-	attack, or 4 block, since they do not have much health.
-</h4>
+	<h4>
+		Prowlers: Very weak orc enemies. The best way to defeat these is either to have 3 ranged or
+		siege attack, or 4 block, since they do not have much health.
+	</h4>
 
-<h4>
-	Cursed Hags: Stronger orc enemies with the poison ability. You will want to block these ones
-	because if you don't, they will do extra wounds to your discard pile. Then you need to have 5
-	attack of any type.
-</h4>
+	<h4>
+		Cursed Hags: Stronger orc enemies with the poison ability. You will want to block these ones
+		because if you don't, they will do extra wounds to your discard pile. Then you need to have 5
+		attack of any type.
+	</h4>
+</div>
 
 <style>
 	p {
