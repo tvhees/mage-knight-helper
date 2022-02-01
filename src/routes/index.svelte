@@ -7,7 +7,7 @@
 	let name = 'whoever you are';
 	let numberOfPlayers = 0;
 	let winners = [];
-	let winnerInput = 'won';
+	let winnerInput = 'Who';
 
 	const handleClick = () => {
 		let playersWhoWon = [];
@@ -26,9 +26,7 @@
 		winners = [];
 	};
 
-	const inputWinner = (e) => {
-		winnerInput = e.target.value;
-	};
+	const showCompendium = () => {};
 
 	$: players = Array(numberOfPlayers)
 		.fill({
@@ -55,12 +53,6 @@
 	Hello {name}!
 </p>
 
-<input type="text" on:input={inputWinner} />
-
-<p>
-	Who {winnerInput}?
-</p>
-
 <p>
 	My name is Jesper and welcome to my Mage Knight website! This is where you can do all the endgame
 	scoring for competitive Mage Knight without having to do all that annoying Maths. There is also a
@@ -83,6 +75,7 @@
 {/if}
 
 <button on:click={resetGame}>Reset</button>
+<button on:click={showCompendium}>Show enemy compendium</button>>
 
 <!-- For each player, one number input for each category -->
 {#each players as player}
@@ -101,11 +94,19 @@
 	The first monsters that you are likely to fight are orcs. They tend to be relatively easy, and
 	they are rampaging enemies, which means that you can attack them from an adjacent square. It also
 	means that if you move from one adjacent square to another, they will attack you. This is a
-	compendium of all of the orc enemies from the game. Prowlers: Very weak orc enemies that run
-	around the map, attacking villages and monasteries, hence the name Prowlers. The best way to
-	defeat these is either to have 3 ranged or siege attack, or 4 block, since they do not have much
-	health.
+	compendium of all of the orc enemies from the game.
 </p>
+
+<h4>
+	Prowlers: Very weak orc enemies. The best way to defeat these is either to have 3 ranged or siege
+	attack, or 4 block, since they do not have much health.
+</h4>
+
+<h4>
+	Cursed Hags: Stronger orc enemies with the poison ability. You will want to block these ones
+	because if you don't, they will do extra wounds to your discard pile. Then you need to have 5
+	attack of any type.
+</h4>
 
 <style>
 	p {
@@ -122,5 +123,11 @@
 
 	.inputOrder {
 		color: burlywood;
+	}
+
+	h4 {
+		color: limegreen;
+		font-size: 1em;
+		font-weight: 0.5em;
 	}
 </style>
