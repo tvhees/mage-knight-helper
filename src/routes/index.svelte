@@ -104,16 +104,17 @@
 		compendium of all of the orc enemies from the game.
 	</p>
 
-	<h4>
+	<p class="compendium">
 		Prowlers: Very weak orc enemies. The best way to defeat these is either to have 3 ranged or
 		siege attack, or 4 block, since they do not have much health.
-	</h4>
+	</p>
 
-	<h4>
+	<p class="compendium">
 		Cursed Hags: Stronger orc enemies with the poison ability. You will want to block these ones
 		because if you don't, they will do extra wounds to your discard pile. Then you need to have 5
 		attack of any type.
-	</h4>
+	</p>
+	>
 </div>
 
 <style>

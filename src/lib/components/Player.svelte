@@ -22,10 +22,10 @@
 	</span>
 	<!-- Spells/Actions -->
 	<span>
-		<NumberInput id="spells" min={0} bind:value={data.spells}>Advanced Actions:</NumberInput>
+		<NumberInput id="spells" min={0} bind:value={data.spells}>Spells:</NumberInput>
 	</span>
 	<span>
-		<NumberInput id="actions" min={0} bind:value={data.actions}>Spells:</NumberInput>
+		<NumberInput id="actions" min={0} bind:value={data.actions}>Advanced Actions:</NumberInput>
 	</span>
 	<!-- Artifacts/Crytals -->
 	<span>
