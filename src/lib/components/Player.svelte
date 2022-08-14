@@ -1,89 +1,78 @@
 <script>
-import { calculatePlayerScore } from "$lib/utilities";
+	import { calculatePlayerScore } from '$lib/utilities';
+	import NumberInput from './NumberInput.svelte';
 
- 
-    export let data;
-        
-    $: score = calculatePlayerScore(data);
-    </script>
-    <!-- <svelte:head>
+	export let data;
+
+	$: score = calculatePlayerScore(data);
+</script>
+
+<!-- <svelte:head>
         <link href="https://fonts.googleapis.com/css?family=Gelasio" rel="stylesheet">
     </svelte:head> -->
 
-    <div>
-        <h2>
-            Player {data.n}
-        </h2>
-        
-        <label>Fame:
-            <input type='number' min=0 bind:value={data.fame}>
-        </label>
-        <!-- Spells/Actions --> 
-        <label>Number of Spells:
-            <input type='number' min=0 bind:value={data.spells}>
-        </label>
-        <label>Number of Advanced Actions:
-            <input type='number' min=0 bind:value={data.actions}>
-        </label>
-    <!-- Artifacts/Crytals -->
-        <label>Number of Artifacts:
-            <input type='number' min=0 bind:value={data.artifacts}>
-        </label>
-        <label>Number of Crystals:
-            <input type='number' min=0 bind:value={data.crystals}>
-        </label>
-    <!-- Units/Wounded Units -->
-        <label>Total levels of Healthy Units:
-            <input type='number' min=0 bind:value={data.healthy}>
-        </label>
-        <label>Total levels of Wounded Units:
-            <input type='number' min=0 bind:value={data.wounded}>
-        </label>
-    <!-- Monasteries/Keeps/Mage Towers -->
-        <label>Number of Conquered Fortified Sites:
-            <input type='number' min=0 bind:value={data.fortified}>
-        </label>
-    <!-- Adventure sites -->
-        <label>Number of Conquered Adventure Sites:
-            <input type='number' min=0 bind:value={data.adventure}>
-        </label>
-    <!-- Wounds -->
-        <label>Number of Wounds:
-            <input type='number' min=0 bind:value={data.wounds}>
-        </label>
-    <!-- Cities Led/Followed -->
-        <label>Number of Cities Led :
-            <input type='number' min=0 bind:value={data.cityleader}>
-        </label>
-        <label>Number of Cities Followed :
-            <input type='number' min=0 bind:value={data.cityfollower}>
-        </label>
-        <p>
-            Score: {score}
-        </p>
-    </div>
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;500&display=swap');
-        
-        div {
-            display: flex;
-            flex-direction: column;
-        }
+<div>
+	<h2>
+		Player {data.n}
+	</h2>
 
-        label {
-            font-size: 2em;
-            font-family: 'Spline Sans', sans-serif;
-            font-weight: 500;
-        }
+	<!-- Fame -->
+	<span>
+		<NumberInput id="fame" min={0} bind:value={data.fame}>Fame:</NumberInput>
+	</span>
+	<!-- Spells/Actions -->
+	<span>
+		<NumberInput id="spells" min={0} bind:value={data.spells}>Spells:</NumberInput>
+	</span>
+	<span>
+		<NumberInput id="actions" min={0} bind:value={data.actions}>Advanced Actions:</NumberInput>
+	</span>
+	<!-- Artifacts/Crytals -->
+	<span>
+		<NumberInput id="artifacts" min={0} bind:value={data.artifacts}>Artifacts:</NumberInput>
+	</span>
+	<span>
+		<NumberInput id="crystals" min={0} bind:value={data.crystals}>Crystals:</NumberInput>
+	</span>
+	<!-- Units/Wounded Units -->
+	<span>
+		<NumberInput id="healthy" min={0} bind:value={data.healthy}>Levels of Healthy Units</NumberInput
+		>
+	</span>
+	<span>
+		<NumberInput id="wounded" min={0} bind:value={data.wounded}
+			>Levels of Wounded Units:</NumberInput
+		>
+	</span>
+	<!-- Monasteries/Keeps/Mage Towers -->
+	<span>
+		<NumberInput id="fortified" min={0} bind:value={data.fortified}>Occupied Sites:</NumberInput>
+	</span>
+	<!-- Adventure sites -->
+	<span>
+		<NumberInput id="adventure" min={0} bind:value={data.adventure}>Adventure Sites:</NumberInput>
+	</span>
+	<!-- Wounds -->
+	<span>
+		<NumberInput id="wounds" min={0} bind:value={data.wounds}>Wounds:</NumberInput>
+	</span>
+	<!-- Cities Led/Followed -->
+	<span>
+		<NumberInput id="city-lead" min={0} bind:value={data.cityleader}>Cities Led:</NumberInput>
+	</span>
+	<span>
+		<NumberInput id="city-follow" min={0} bind:value={data.cityfollower}
+			>Cities Followed:</NumberInput
+		>
+	</span>
+	<p>
+		Score: {score}
+	</p>
+</div>
 
-        p {
-            font-size: 2em;
-            font-family: 'Spline Sans', sans-serif;
-        }
-
-        input {
-            height: 2em;
-            font-size: 0.78em;
-        }
-    </style>
+<style>
+	div {
+		display: flex;
+		flex-direction: column;
+	}
+</style>

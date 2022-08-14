@@ -1,10 +1,13 @@
 <script>
+	import NumberInput from '$lib/components/NumberInput.svelte';
+
 	import Player from '$lib/components/Player.svelte';
 	import { calculatePlayerScore } from '$lib/utilities';
 
 	let name = 'whoever you are';
 	let numberOfPlayers = 0;
 	let winners = [];
+	let winnerInput = 'Who';
 
 	const handleClick = () => {
 		let playersWhoWon = [];
@@ -21,6 +24,13 @@
 	const resetGame = () => {
 		numberOfPlayers = 0;
 		winners = [];
+		document.getElementById('monsterCompendium').style.display = 'none';
+		document.getElementById('buttonForCompendium').style.display = 'block';
+	};
+
+	const showCompendium = () => {
+		document.getElementById('monsterCompendium').style.display = 'block';
+		document.getElementById('buttonForCompendium').style.display = 'none';
 	};
 
 	$: players = Array(numberOfPlayers)
@@ -59,67 +69,74 @@
 <input type="text" bind:value={name} />
 
 <!-- Select number of players -->
-<label
-	>Number of players:
-	<input type="number" min="0" max="4" bind:value={numberOfPlayers} />
-</label>
+<NumberInput id="players" min={0} max={4} bind:value={numberOfPlayers}
+	>Number of players:</NumberInput
+>
 
 <p>Click this button when you have finished scoring!</p>
 <button on:click={handleClick}> Finished Scoring! </button>
 {#if winners.length}
-	<p>And the winner is... {winners.map((n) => `player ${n}`).join(' and ')}</p>
+	<p>And the winner is... {winners.map((n) => `Player ${n}`).join(' and ')}!</p>
 {/if}
 
 <button on:click={resetGame}>Reset</button>
+
+<button id="buttonForCompendium" on:click={showCompendium}>Show enemy compendium</button>
 
 <!-- For each player, one number input for each category -->
 {#each players as player}
 	<Player bind:data={player} />
 {/each}
 
-<p>
-	Below is a compendium of all the monsters in Mage Knight and its expansions. You will find
-	descriptions of each monster, its abilities and how to beat it. From terrifying dragons to
-	marauding orcs, from malicious ghosts to hordes of zombies, there are tons of monsters in Mage
-	Knight to learn how to fight.
-</p>
+<div id="monsterCompendium" style="display:none;">
+	<p>
+		Below is a compendium of all the monsters in Mage Knight and its expansions. You will find
+		descriptions of each monster, its abilities and how to beat it. From terrifying dragons to
+		marauding orcs, from malicious ghosts to hordes of zombies, there are tons of monsters in Mage
+		Knight to learn how to fight.
+	</p>
 
-<p>
-	Orcs The first monsters that you are likely to fight are orcs. They tend to be relatively easy,
-	and they are rampaging enemies, which means that
-</p>
+	<h3>Orcs</h3>
+	<p>
+		The first monsters that you are likely to fight are orcs. They tend to be relatively easy, and
+		they are rampaging enemies, which means that you can attack them from an adjacent square. It
+		also means that if you move from one adjacent square to another, they will attack you. This is a
+		compendium of all of the orc enemies from the game.
+	</p>
+
+	<p class="compendium">
+		Prowlers: Very weak orc enemies. The best way to defeat these is either to have 3 ranged or
+		siege attack, or 4 block, since they do not have much health.
+	</p>
+
+	<p class="compendium">
+		Cursed Hags: Stronger orc enemies with the poison ability. You will want to block these ones
+		because if you don't, they will do extra wounds to your discard pile. Then you need to have 5
+		attack of any type.
+	</p>
+	>
+</div>
 
 <style>
 	p {
 		color: limegreen;
-		font-size: 2em;
-		font-family: 'Spline Sans', sans-serif;
 	}
 
 	.hello {
 		color: turquoise;
-		font-size: 2em;
-		font-family: 'Spline Sans', sans-serif;
-	}
-
-	label {
-		font-size: 2em;
-		font-family: 'Spline Sans', sans-serif;
-		color: aquamarine;
-	}
-	input {
-		height: 2em;
-		font-size: 1em;
 	}
 
 	button {
-		height: 2em;
-		font-size: 1em;
-		font-family: 'Spline Sans', sans-serif;
 		color: black;
 	}
 
 	.inputOrder {
 		color: burlywood;
+	}
+
+	h4 {
+		color: limegreen;
+		font-size: 1em;
+		font-weight: 0.5em;
 	}
 </style>
